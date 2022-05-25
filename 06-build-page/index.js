@@ -59,8 +59,8 @@ tempHtml.on('data', (data) => {
   let compoTags = handledHtml.match(/{{(.*)}}/gi);
   Promise.all(
     compoTags.map(async (item) => {
-      let tagNames = item.split('{')[2];
-      tagNames= tagNames.split('}')[0];
+      let tagNames = item.split('{')[2]; // separate tagname from {
+      tagNames= tagNames.split('}')[0]; // separate tagname from }
       let component = await fsP.readFile(
         path.join(COMPONENTS_DIR, `${tagNames}.html`)
       );

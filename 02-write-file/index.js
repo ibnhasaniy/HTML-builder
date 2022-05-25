@@ -20,6 +20,10 @@ let rl = readline.Interface({
   output: stdout,
 });
 
+process.on('beforeExit', ()=>{
+  stdout.write('\nGood bye!');
+});
+
 rl.on('line', (line) => {
   let isExit = line.toLowerCase() === 'exit';
   if (isExit) {
