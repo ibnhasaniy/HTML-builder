@@ -7,6 +7,7 @@ const DEST_PATH = path.join(__dirname, '/files-copy');
 copyDir();
 
 async function copyDir() {
+  await fs.rm(DEST_PATH, {force: true, recursive: true}); // if DIR exist remove this DIR
   fs.mkdir(DEST_PATH, { recursive: true });
   let files = await fs.readdir(SRC_PATH, { withFileTypes: true });
 
