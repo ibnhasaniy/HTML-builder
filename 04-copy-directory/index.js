@@ -12,7 +12,7 @@ async function copyDir() {
   let files = await fs.readdir(SRC_PATH, { withFileTypes: true });
 
   for (let i = 0; i < files.length; i++) {
-    if (files[i].isFile) {
+    if (files[i].isFile()) {
       let srcFile = path.join(SRC_PATH, files[i].name);
       let destFile = path.join(DEST_PATH, files[i].name);
       fs.copyFile(srcFile, destFile);
